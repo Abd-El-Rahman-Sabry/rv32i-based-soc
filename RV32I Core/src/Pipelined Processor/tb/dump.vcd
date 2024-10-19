@@ -1,0 +1,19 @@
+$date
+	Thu Oct 17 15:56:40 2024
+$end
+$version
+	QuestaSim Version 10.7c
+$end
+$timescale
+	100ps
+$end
+
+$scope module sc_riscv_tb $end
+
+$scope task reset $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+$end
