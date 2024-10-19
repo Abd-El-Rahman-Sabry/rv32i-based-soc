@@ -22,28 +22,7 @@ module pipelined_riscv_datapath #(
     input  wire [`WIDTH - 1 : 0]        i_r_data
 ); 
 
-    /*
 
-        Control Signals 
-
-    */
-    wire                      pc_src_ctrl;      //PC 
-    wire [0:0]                alu_op_src_ctrl;  //ALU 
-    wire [3:0]                alu_ctrl;         //ALU 
-    wire [2:0]                sx_immd_src_ctrl; //IMMEDIATE 
-    wire                      rf_we_ctrl; 
-    wire [2:0]                rf_wb_src_ctrl; 
-    wire                      bu_jb_ctrl; 
-
-    wire                      alu_zero_status; 
-
-
-
-
-    // Program Counter Interanl Signals 
-
-    wire [`I_ADD_SIZE -1 : 0] pc_plus_4; 
-    wire [`I_ADD_SIZE -1 : 0] pc_src_val;
 
 
     // Instruction Memory Interanl Nets 
@@ -71,7 +50,7 @@ module pipelined_riscv_datapath #(
     wire [`WIDTH - 1: 0] bu_next_dest_jb; 
 
     assign alu_op_1     = (alu_op_src_ctrl)? sx_immd : rf_src_1_data;
-    assign pc_src_val   = (pc_src_ctrl)?    bu_next_dest_jb : pc_plus_4;
+    
 
     
     // Where to write back 
@@ -88,34 +67,14 @@ module pipelined_riscv_datapath #(
     end
 
     
-    pc_reg u0(
-        .i_clk(i_clk),
-        .i_rstn(i_rstn),
-        .i_nxt_pc(pc_src_val),
-        .o_pc(o_instr_add)
-    );
-
-
-    adder u1(
-        .a(o_instr_add),
-        .b('d4),
-        .r(pc_plus_4)
-    );
 
 
 
 
-    regfile u2(
-        .i_clk(i_clk),
-        .i_rstn(i_rstn),
-        .i_w(rf_we_ctrl),
-        .i_src_0(instr[19:15]),
-        .i_src_1(instr[24:20]),
-        .i_dst(instr[11:7]),
-        .i_data(rf_wb_data),
-        .o_d_src_0(rf_src_0_data),
-        .o_d_src_1(rf_src_1_data) 
-    );
+
+
+
+
 
 
     alu u3(
@@ -128,36 +87,20 @@ module pipelined_riscv_datapath #(
     ); 
 
 
-    sign_extend u4(
-        .i_src(sx_immd_src_ctrl),
-        .i_immd(instr[31:7]),
-        .o_sx_immd(sx_immd)
-    );
-
+    
     
     branch_unit u5(
+    
         .i_jb_ctrl(bu_jb_ctrl),
         .i_pc(o_instr_add),
         .i_offset(sx_immd),
         .i_r_src(rf_src_0_data),
         .o_nxt_pc(bu_next_dest_jb)
+    
     );
 
 
-    control_unit u6(
-        .o_alu_op_src_ctrl(alu_op_src_ctrl),
-        .o_pc_src_ctrl(pc_src_ctrl),
-        .o_sx_imm_src_ctrl(sx_immd_src_ctrl),
-        .o_rf_we_ctrl(rf_we_ctrl),
-        .o_rf_wb_scr_ctrl(rf_wb_src_ctrl),
-        .o_alu_ctrl(alu_ctrl),
-        .o_bu_jb_ctrl(bu_jb_ctrl),
-        .o_mem_we(o_we), 
-        .i_funct3(instr[14:12]),
-        .i_funct7(instr[31:25]),
-        .i_opcode(instr[6:0]), 
-        .i_zero_flg(alu_zero_status)
-    );
+
 
 
 

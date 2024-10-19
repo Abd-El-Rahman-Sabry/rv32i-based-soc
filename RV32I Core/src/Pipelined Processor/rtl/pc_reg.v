@@ -6,6 +6,7 @@ module pc_reg #(
 )(
     input wire                      i_clk,
     input wire                      i_rstn,
+    input wire                      i_en,
 
     input   [WIDTH - 1 : 0 ]        i_nxt_pc,
     output  reg [WIDTH - 1 : 0 ]    o_pc
@@ -19,7 +20,10 @@ module pc_reg #(
             end
         else 
             begin
-                o_pc <= i_nxt_pc; 
+                if (~i_en)
+                    begin
+                        o_pc <= i_nxt_pc; 
+                    end
             end
         
     end

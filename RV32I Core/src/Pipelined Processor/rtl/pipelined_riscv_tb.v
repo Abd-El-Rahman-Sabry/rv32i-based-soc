@@ -13,7 +13,7 @@ module pipelined_riscv_tb;
 
     reg clk , rst_n; 
 
-    sc_riscv_core dut(
+    pipelined_riscv_core dut(
         .i_clk(clk),
         .i_rstn(rst_n)
     );
