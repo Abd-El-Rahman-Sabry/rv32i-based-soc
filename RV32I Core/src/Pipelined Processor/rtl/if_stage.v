@@ -35,7 +35,7 @@ module if_stage #(
 
     wire [WIDTH  - 1 : 0 ]           pc_out;
     wire [`I_ADD_SIZE  - 1 : 0 ]     pc_plus_4;
-    reg  [WIDTH  - 1 : 0 ]           instr;
+    wire [WIDTH  - 1 : 0 ]           instr;
 
     
     adder u0_adder (
@@ -45,6 +45,8 @@ module if_stage #(
     );
 
     assign pc_src_val   = (i_pc_src_ctrl) ? i_bu_next_dest_jb : pc_plus_4;
+
+    assign instr = i_instr;  
 
 
     pc_reg u1_pc_reg(

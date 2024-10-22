@@ -42,7 +42,7 @@ module pipelined_riscv_tb;
         rst_n <= 'b1;
         reset(); 
 
-        #(100 * CLOCK_CYCLE);
+        #(200 * CLOCK_CYCLE);
 
         $finish;
 
