@@ -97,7 +97,7 @@ always @(*) begin
                     o_alu_op_src_ctrl   <= 1'b0;
                     o_branch            <= 1'b1;
                     o_jump              <= 1'b0;
-                    o_sx_imm_src_ctrl   <= 3'b000;
+                    o_sx_imm_src_ctrl   <= 3'b010;
                     o_rf_we_ctrl        <= 1'b0;
                     o_mem_we            <= 1'b0;
                     o_rf_wb_scr_ctrl    <= 3'b000;
