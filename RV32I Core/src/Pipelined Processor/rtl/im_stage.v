@@ -29,14 +29,14 @@ module im_stage #(
     
     output reg  [WIDTH - 1 : 0]             o_iwb_bu_next_dest_jb ,
     output reg  [WIDTH - 1 : 0]             o_iwb_alu_out         ,
-    output reg  [WIDTH - 1 : 0]             o_iwb_r_mem            ,
+    output reg  [WIDTH - 1 : 0]             o_iwb_r_mem           ,
     output reg                              o_iwb_rf_we_ctrl      ,
     output reg  [2:0]                       o_iwb_rf_wb_src_ctrl  ,
     output reg  [WIDTH - 1 : 0]             o_iwb_sx_data         ,
     output reg  [WIDTH - 1 : 0]             o_iwb_pc_plus_4       ,
     output reg  [`RF_ADD_SIZE - 1 : 0]      o_iwb_dst             ,
         
-    input wire                              i_im_mem_we          ,
+    input wire                              i_im_mem_we           ,
     input wire  [WIDTH - 1 : 0]             i_im_write_data      
     
     // ---------------------------------------------------------

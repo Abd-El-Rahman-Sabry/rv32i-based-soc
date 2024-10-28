@@ -20,7 +20,7 @@ module regfile #(
     reg [WIDTH - 1 : 0] rf [0 : DEPTH - 1]; 
 
 
-    always @(posedge i_clk or negedge i_rstn)
+    always @(negedge i_clk or negedge i_rstn)
         begin
             if (~i_rstn)
                 begin 

@@ -65,6 +65,7 @@ module ie_stage#(
     reg [WIDTH - 1 : 0]                     forward_op_1;
     
     wire [WIDTH - 1 : 0]                    alu_out;
+    wire [WIDTH - 1 : 0]                    alu_op_1;
     wire                                    alu_zero_status;                   
     
 

@@ -229,17 +229,13 @@ module pipelined_riscv_datapath #(
     ); 
 
     iwb_stage u4_iwb(
-        .i_clk                  (i_clk), 
-        .i_rstn                 (i_rstn),
 
 
         .i_iwb_bu_next_dest_jb  (im_iwb_bu_next_dest_jb),
         .i_iwb_alu_out          (im_iwb_alu_out),
-        .i_iwb_rf_we_ctrl       (im_iwb_rf_we_ctrl),
         .i_iwb_rf_wb_src_ctrl   (im_iwb_rf_wb_src_ctrl),
         .i_iwb_sx_data          (im_iwb_sx_data),
         .i_iwb_pc_plus_4        (im_iwb_pc_plus_4),
-        .i_iwb_dst              (im_iwb_dst),
         .i_iwb_r_mem            (im_iwb_r_mem), 
         .o_iwb_wb_data          (iwb_out) 
     );
@@ -254,8 +250,8 @@ module pipelined_riscv_datapath #(
         .o_ie_forward_0         (ie_forward_0),
         .o_ie_forward_1         (ie_forward_1),
         
-        .i_id_src_0             (i_instr_mem_out[19:15]),
-        .i_id_src_1             (i_instr_mem_out[24:20]),
+        .i_id_src_0             (if_id_instr[19:15]),
+        .i_id_src_1             (if_id_instr[24:20]),
         
         .i_ie_src_0             (id_ie_src_0),
         .i_ie_src_1             (id_ie_src_1),
