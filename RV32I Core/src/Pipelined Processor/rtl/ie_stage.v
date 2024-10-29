@@ -20,8 +20,7 @@ module ie_stage#(
     input wire [3:0]                        i_ie_alu_ctrl,           
     input wire                              i_ie_bu_jb_ctrl, 
 
-    input wire [`RF_ADD_SIZE - 1 : 0 ]      i_ie_src_0,
-    input wire [`RF_ADD_SIZE - 1 : 0 ]      i_ie_src_1,
+
     input wire [`RF_ADD_SIZE - 1 : 0 ]      i_ie_dst  ,
     
     input wire [WIDTH - 1 : 0]              i_m_alu_out,
@@ -91,10 +90,15 @@ module ie_stage#(
     always @(*) begin
 
         case (i_forward_1)
-            2'b00 :  forward_op_1 <= i_ie_rf_src_1_data;
-            2'b01 :  forward_op_1 <= i_m_alu_out;
-            2'b10 :  forward_op_1 <= i_iwb_out; 
-            2'b11 :  forward_op_1 <= 'b0; 
+            
+            2'b00 :  forward_op_1   <=      i_ie_rf_src_1_data;
+
+            2'b01 :  forward_op_1   <=      i_m_alu_out;
+            
+            2'b10 :  forward_op_1   <=      i_iwb_out; 
+            
+            2'b11 :  forward_op_1   <=      'b0; 
+        
         endcase 
     end
 
@@ -103,11 +107,11 @@ module ie_stage#(
 
     
     alu alu_u3(
-        .i_alu_ctrl(i_ie_alu_ctrl),
-        .i_op_0(forward_op_0), 
-        .i_op_1(alu_op_1), 
-        .o_alu_out(alu_out),
-        .o_zero(alu_zero_status)
+        .i_alu_ctrl         (i_ie_alu_ctrl),
+        .i_op_0             (forward_op_0), 
+        .i_op_1             (alu_op_1), 
+        .o_alu_out          (alu_out),
+        .o_zero             (alu_zero_status)
 
     ); 
 

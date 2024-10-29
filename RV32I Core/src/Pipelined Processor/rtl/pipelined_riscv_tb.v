@@ -39,10 +39,9 @@ module pipelined_riscv_tb;
         $dumpfile("dump.vcd"); 
         $dumpvars; 
         clk <= 'b0;
-        rst_n <= 'b1;
         reset(); 
 
-        #(200 * CLOCK_CYCLE);
+        #(1000 * CLOCK_CYCLE);
 
         $finish;
 

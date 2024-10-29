@@ -10,6 +10,7 @@ module id_stage #(
 
     //Input 
     
+    input wire  [`RF_ADD_SIZE - 1 : 0]          i_iwb_dst,
     input wire  [WIDTH - 1 : 0]                 i_iwb_data,
     input wire                                  i_we, 
 
@@ -114,7 +115,7 @@ module id_stage #(
         
         .i_src_0(i_id_instr[19:15]),
         .i_src_1(i_id_instr[24:20]),
-        .i_dst(i_id_instr[11:7]),
+        .i_dst(i_iwb_dst),
         
         .i_data(i_iwb_data),
         

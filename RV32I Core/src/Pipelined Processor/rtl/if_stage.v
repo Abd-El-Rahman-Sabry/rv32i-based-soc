@@ -39,9 +39,9 @@ module if_stage #(
 
     
     adder u0_adder (
-        .a(pc_out),
-        .b('d4),
-        .r(pc_plus_4)
+        .a              (pc_out),
+        .b              ('d4),
+        .r              (pc_plus_4)
     );
 
     assign pc_src_val   = (i_pc_src_ctrl) ? i_bu_next_dest_jb : pc_plus_4;
@@ -50,11 +50,11 @@ module if_stage #(
 
 
     pc_reg u1_pc_reg(
-        .i_en(i_if_stall),
-        .i_clk(i_clk),
-        .i_rstn(i_rstn),
-        .i_nxt_pc(pc_src_val),
-        .o_pc(pc_out)
+        .i_en           (i_if_stall),
+        .i_clk          (i_clk),
+        .i_rstn         (i_rstn),
+        .i_nxt_pc       (pc_src_val),
+        .o_pc           (pc_out)
     );
 
 

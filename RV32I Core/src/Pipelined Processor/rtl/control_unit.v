@@ -83,8 +83,8 @@ always @(*) begin
     `OPCODE_STORE : 
                 begin
                     o_alu_op_src_ctrl   <= 1'b1;
-                    o_branch              <= 1'b0;
-                    o_jump                <= 1'b0;
+                    o_branch            <= 1'b0;
+                    o_jump              <= 1'b0;
                     o_sx_imm_src_ctrl   <= 3'b001;
                     o_rf_we_ctrl        <= 1'b0;
                     o_mem_we            <= 1'b1;
@@ -131,8 +131,8 @@ always @(*) begin
     `OPCODE_LUI : 
                 begin
                     o_alu_op_src_ctrl   <= 1'b0;
-                    o_branch              <= 1'b0;
-                    o_jump                <= 1'b0;
+                    o_branch            <= 1'b0;
+                    o_jump              <= 1'b0;
                     o_sx_imm_src_ctrl   <= 3'b100;
                     o_rf_we_ctrl        <= 1'b1;
                     o_mem_we            <= 1'b0;
@@ -181,12 +181,12 @@ always @(*) begin
     default : 
             begin
                     o_alu_op_src_ctrl   <= 1'b0;
-                    o_branch              <= 1'b0;
-                    o_jump                <= 1'b0;
+                    o_branch            <= 1'b0;
+                    o_jump              <= 1'b0;
                     o_sx_imm_src_ctrl   <= 3'b000;
                     o_rf_we_ctrl        <= 1'b0;
                     o_mem_we            <= 1'b0;
-                    o_rf_wb_scr_ctrl    <= 3'b010;
+                    o_rf_wb_scr_ctrl    <= 3'b000;
                     alu_op              <= 2'b00;
                     o_bu_jb_ctrl        <= 1'b0;
                 end

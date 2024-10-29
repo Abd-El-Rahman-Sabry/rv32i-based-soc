@@ -17,7 +17,7 @@ module instr_mem #(
     reg [WIDTH - 1 : 0] i_mem [DEPTH - 1 : 0]; 
         
     initial begin
-        $readmemh("program2.hex" , i_mem);
+        $readmemh("program3.hex" , i_mem);
     end
 
     assign o_instr = i_mem[i_add>>2]; 

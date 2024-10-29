@@ -127,6 +127,7 @@ module pipelined_riscv_datapath #(
         .i_rstn                 (i_rstn),
         
         // Input from WriteBack Stage 
+        .i_iwb_dst              (im_iwb_dst),
         .i_iwb_data             (iwb_out),
         .i_we                   (im_iwb_rf_we_ctrl),
         
@@ -177,8 +178,6 @@ module pipelined_riscv_datapath #(
         .i_ie_rf_wb_src_ctrl    (id_ie_rf_wb_src_ctrl),
         .i_ie_alu_ctrl          (id_ie_alu_ctrl), 
         .i_ie_bu_jb_ctrl        (id_ie_bu_jb_ctrl), 
-        .i_ie_src_0             (id_ie_src_0),
-        .i_ie_src_1             (id_ie_src_1),
         .i_ie_dst               (id_ie_dst),
         .i_ie_rf_src_0_data     (id_ie_rf_src_0),
         .i_ie_rf_src_1_data     (id_ie_rf_src_1),
