@@ -119,11 +119,11 @@ module ie_stage#(
     
     branch_unit bu_u5(
     
-        .i_jb_ctrl(i_ie_bu_jb_ctrl),
-        .i_pc(i_ie_pc),
-        .i_offset(i_ie_sx_data),
-        .i_r_src(i_ie_rf_src_0_data),
-        .o_nxt_pc(o_bu_next_dest_jb)
+        .i_jb_ctrl          (i_ie_bu_jb_ctrl),
+        .i_pc               (i_ie_pc),
+        .i_offset           (i_ie_sx_data),
+        .i_r_src            (forward_op_1),
+        .o_nxt_pc           (o_bu_next_dest_jb)
     
     );
 
